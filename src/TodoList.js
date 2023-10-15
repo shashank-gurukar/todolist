@@ -3,7 +3,7 @@ import Todoitem from './Todoitem';
 import NewtodoForm from './NewtodoFrom';
 class TodoList extends Component{
     state={
-        todos:[{task:'walk my dog'},{task:'feed chicekns'}]
+        todos:[]
     }
     create=(newTodo)=>{
         this.setState({
@@ -12,7 +12,7 @@ class TodoList extends Component{
     }
     render(){
         let todos= this.state.todos.map(todo=>{
-            return <Todoitem task={todo.task}/>
+            return <Todoitem key={todo.id} task={todo.task}/>
         })
         return(
             <div>
