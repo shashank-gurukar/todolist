@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { v4 as uuid } from 'uuid';
+import './NewTodoForm.css'
 
 class NewTodoForm extends Component {
   state = { task: '' };
@@ -12,7 +13,7 @@ class NewTodoForm extends Component {
 
   handleSubmit = (evt) => {
     evt.preventDefault();
-    this.props.create({ ...this.state, id: uuid() });
+    this.props.create({ ...this.state, id: uuid(),completed:false });
     this.setState({ task: '' }, () => {
       // This callback function will be called after the state is updated
       // You can add any code that relies on the updated state here
@@ -23,7 +24,9 @@ class NewTodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form 
+      className='NewTodoForm'
+      onSubmit={this.handleSubmit}>
         <label htmlFor='task'>
           <input
             type='text'  
